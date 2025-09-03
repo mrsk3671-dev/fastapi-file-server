@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-file-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-file-server
+  template:
+    metadata:
+      labels:
+        app: fastapi-file-server
+    spec:
+      containers:
+        - name: fastapi-file-server
+          image: fastapi-file-server:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: APP_HOST
+              value: "0.0.0.0"
+            - name: APP_PORT
+              value: "8000"
+            - name: UPLOAD_DIR
+              value: "/uploads"
+            - name: MAX_FILE_SIZE_MB
+              value: "50"
+          volumeMounts:
+            - name: uploads
+              mountPath: /uploads
+      volumes:
+        - name: uploads
+          emptyDir: {}   # for testing, resets when pod restarts
