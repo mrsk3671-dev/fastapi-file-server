@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: fastapi-file-server-service
 spec:
-  type: NodePort
+  type: LoadBalancer   # instead of NodePort
   selector:
     app: fastapi-file-server
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 30080   # Minikube will expose this port
