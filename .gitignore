@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Env
+.env
+venv/
+.env.*
+
+# Uploads
+uploads/
+
+# Docker
+*.log
+*.pid
+*.sock
+*.swp
+.docker/
+docker-compose.override.yml
+
+# IDE
+.vscode/
+.idea/
+*.iml
