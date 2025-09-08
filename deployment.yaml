@@ -17,12 +17,12 @@ spec:
           image: fastapi-file-server:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
           env:
             - name: APP_HOST
               value: "0.0.0.0"
             - name: APP_PORT
-              value: "8000"
+              value: "8080"
             - name: UPLOAD_DIR
               value: "/uploads"
             - name: MAX_FILE_SIZE_MB
@@ -33,3 +33,4 @@ spec:
       volumes:
         - name: uploads
           emptyDir: {}   # for testing, resets when pod restarts
+
